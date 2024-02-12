@@ -3,9 +3,19 @@ package main
 import "fmt"
 
 func main() {
-	// 1: /problems/two-sum/
+	twoSum()
+	lengthOfLongestSubstring()
+}
+
+func twoSum() {
 	nums := []int{2, 7, 11, 15}
 	target := 9
-	result := twoSum(nums, target)
-	fmt.Printf("Two sum: %v\n", result)
+	result := Leetcode{}.twoSum(nums, target)
+	fmt.Println("Two sum:", result)
+}
+
+func lengthOfLongestSubstring() {
+	s := "abcdefabc"
+	result := Leetcode{}.lengthOfLongestSubstring(s)
+	fmt.Println("Length of longest substring:", result)
 }
