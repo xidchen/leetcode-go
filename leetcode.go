@@ -67,3 +67,28 @@ func isPalindromicString(s string) bool {
 	}
 	return true
 }
+
+// 6: /problems/zigzag-conversion/
+func (l Leetcode) convert(s string, numRows int) string {
+	if numRows == 1 || len(s) < numRows {
+		return s
+	}
+	zigzag := make([]string, numRows)
+	row := 0
+	step := 1
+	for _, c := range s {
+		zigzag[row] += string(c)
+		if row == 0 {
+			step = 1
+		}
+		if row == numRows-1 {
+			step = -1
+		}
+		row += step
+	}
+	var res string
+	for _, str := range zigzag {
+		res += str
+	}
+	return res
+}

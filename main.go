@@ -6,6 +6,7 @@ func main() {
 	twoSum()
 	lengthOfLongestSubstring()
 	longestPalindromeSubstring()
+	convert()
 }
 
 // 1: /problems/two-sum/
@@ -28,4 +29,12 @@ func longestPalindromeSubstring() {
 	s := "babad"
 	result := Leetcode{}.longestPalindromeSubstring(s)
 	fmt.Println("Longest palindromic substring:", result)
+}
+
+// 6: /problems/zigzag-conversion/
+func convert() {
+	s := "PAYPALISHIRING"
+	numRows := 3
+	result := Leetcode{}.convert(s, numRows)
+	fmt.Println("Zigzag conversion:", result)
 }
