@@ -1,5 +1,7 @@
 package main
 
+import "math"
+
 type Leetcode struct{}
 
 // 1: /problems/two-sum/
@@ -91,4 +93,26 @@ func (l Leetcode) convert(s string, numRows int) string {
 		res += str
 	}
 	return res
+}
+
+// 7: /problems/reverse-integer/
+func (l Leetcode) reverse(x int) int {
+	negative := x < 0
+	if negative {
+		x = -x
+	}
+	var y = 0
+	for x != 0 {
+		y = y*10 + x%10
+		x /= 10
+	}
+	if y > math.MaxInt32 {
+		return 0
+	}
+	if negative {
+		return -y
+	} else {
+		return y
+	}
+
 }

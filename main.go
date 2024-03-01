@@ -7,6 +7,7 @@ func main() {
 	lengthOfLongestSubstring()
 	longestPalindromeSubstring()
 	convert()
+	reverse()
 }
 
 // 1: /problems/two-sum/
@@ -37,4 +38,11 @@ func convert() {
 	numRows := 3
 	result := Leetcode{}.convert(s, numRows)
 	fmt.Println("Zigzag conversion:", result)
+}
+
+// 7: /problems/reverse-integer/
+func reverse() {
+	x := -2147483648
+	result := Leetcode{}.reverse(x)
+	fmt.Println("Reverse integer:", result)
 }
