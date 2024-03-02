@@ -1,6 +1,9 @@
 package main
 
-import "math"
+import (
+	"math"
+	"strings"
+)
 
 type Leetcode struct{}
 
@@ -115,4 +118,32 @@ func (l Leetcode) reverse(x int) int {
 		return y
 	}
 
+}
+
+// 8: /problems/string-to-integer-atoi/
+func (l Leetcode) myAtoi(s string) int {
+	s = strings.TrimSpace(s)
+	if s == "" {
+		return 0
+	}
+	var sign int64 = 1
+	if s[0] == '+' || s[0] == '-' {
+		if s[0] == '-' {
+			sign = -1
+		}
+		s = s[1:]
+	}
+	res := int64(0)
+	for _, c := range s {
+		if c < '0' || c > '9' {
+			break
+		}
+		res = res*10 + int64(c-'0')
+		if res*sign > math.MaxInt32 {
+			return math.MaxInt32
+		} else if res*sign < math.MinInt32 {
+			return math.MinInt32
+		}
+	}
+	return int(res * sign)
 }

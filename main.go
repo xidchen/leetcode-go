@@ -8,6 +8,7 @@ func main() {
 	longestPalindromeSubstring()
 	convert()
 	reverse()
+	myAtoi()
 }
 
 // 1: /problems/two-sum/
@@ -45,4 +46,11 @@ func reverse() {
 	x := -2147483648
 	result := Leetcode{}.reverse(x)
 	fmt.Println("Reverse integer:", result)
+}
+
+// 8: /problems/string-to-integer-atoi/
+func myAtoi() {
+	s := " -273 degree "
+	result := Leetcode{}.myAtoi(s)
+	fmt.Println("String to integer (atoi):", result)
 }
