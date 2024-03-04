@@ -2,6 +2,7 @@ package main
 
 import (
 	"math"
+	"strconv"
 	"strings"
 )
 
@@ -146,4 +147,18 @@ func (l Leetcode) myAtoi(s string) int {
 		}
 	}
 	return int(res * sign)
+}
+
+// 9: /problems/palindrome-number/
+func (l Leetcode) isPalindrome(x int) bool {
+	s := strconv.Itoa(x)
+	return s == reverseString(s)
+}
+
+func reverseString(s string) string {
+	runes := []rune(s)
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
 }

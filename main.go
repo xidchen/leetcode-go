@@ -2,15 +2,6 @@ package main
 
 import "fmt"
 
-func main() {
-	twoSum()
-	lengthOfLongestSubstring()
-	longestPalindromeSubstring()
-	convert()
-	reverse()
-	myAtoi()
-}
-
 // 1: /problems/two-sum/
 func twoSum() {
 	nums := []int{2, 7, 11, 15}
@@ -53,4 +44,21 @@ func myAtoi() {
 	s := " -273 degree "
 	result := Leetcode{}.myAtoi(s)
 	fmt.Println("String to integer (atoi):", result)
+}
+
+// 9: /problems/palindrome-number/
+func isPalindrome() {
+	x := 121
+	result := Leetcode{}.isPalindrome(x)
+	fmt.Println("Is palindrome:", result)
+}
+
+func main() {
+	twoSum()
+	lengthOfLongestSubstring()
+	longestPalindromeSubstring()
+	convert()
+	reverse()
+	myAtoi()
+	isPalindrome()
 }
