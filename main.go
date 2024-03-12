@@ -53,6 +53,14 @@ func isPalindrome() {
 	fmt.Println("Is palindrome:", result)
 }
 
+// 10: /problems/regular-expression-matching/
+func isMatch() {
+	s := "aa"
+	p := "a*"
+	result := Leetcode{}.isMatch(s, p)
+	fmt.Println("Regular expression matching:", result)
+}
+
 func main() {
 	twoSum()
 	lengthOfLongestSubstring()
@@ -61,4 +69,5 @@ func main() {
 	reverse()
 	myAtoi()
 	isPalindrome()
+	isMatch()
 }
