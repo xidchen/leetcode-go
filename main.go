@@ -61,6 +61,13 @@ func isMatch() {
 	fmt.Println("Regular expression matching:", result)
 }
 
+// 11: /problems/container-with-most-water/
+func maxArea() {
+	height := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
+	result := Leetcode{}.maxArea(height)
+	fmt.Println("Container with most water:", result)
+}
+
 func main() {
 	twoSum()
 	lengthOfLongestSubstring()
@@ -70,4 +77,5 @@ func main() {
 	myAtoi()
 	isPalindrome()
 	isMatch()
+	maxArea()
 }

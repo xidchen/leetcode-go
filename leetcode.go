@@ -183,3 +183,17 @@ func (l Leetcode) isMatch(s string, p string) bool {
 	}
 	return dp[0][0]
 }
+
+// 11: /problems/container-with-most-water/
+func (l Leetcode) maxArea(height []int) int {
+	maxArea, i, j := 0, 0, len(height)-1
+	for i < j {
+		maxArea = max(maxArea, min(height[i], height[j])*(j-i))
+		if height[i] < height[j] {
+			i++
+		} else {
+			j--
+		}
+	}
+	return maxArea
+}
