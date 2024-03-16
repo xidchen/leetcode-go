@@ -68,6 +68,13 @@ func maxArea() {
 	fmt.Println("Container with most water:", result)
 }
 
+// 12: /problems/integer-to-roman/
+func intToRoman() {
+	num := 2024
+	result := Leetcode{}.intToRoman(num)
+	fmt.Println("Integer to roman:", result)
+}
+
 func main() {
 	twoSum()
 	lengthOfLongestSubstring()
@@ -78,4 +85,5 @@ func main() {
 	isPalindrome()
 	isMatch()
 	maxArea()
+	intToRoman()
 }

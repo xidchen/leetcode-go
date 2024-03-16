@@ -197,3 +197,21 @@ func (l Leetcode) maxArea(height []int) int {
 	}
 	return maxArea
 }
+
+// 12: /problems/integer-to-roman/
+func (l Leetcode) intToRoman(num int) string {
+	mapping := [][]interface{}{
+		{1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},
+		{100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"},
+		{10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"},
+		{1, "I"},
+	}
+	romans := strings.Builder{}
+	for _, pair := range mapping {
+		for pair[0].(int) <= num {
+			num -= pair[0].(int)
+			romans.WriteString(pair[1].(string))
+		}
+	}
+	return romans.String()
+}
