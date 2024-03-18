@@ -215,3 +215,21 @@ func (l Leetcode) intToRoman(num int) string {
 	}
 	return romans.String()
 }
+
+// 13: /problems/roman-to-integer/
+func (l Leetcode) romanToInt(s string) int {
+	d := map[rune]int{
+		'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000,
+	}
+	integer, prevInt := 0, 0
+	for i := len(s) - 1; i >= 0; i-- {
+		roman := rune(s[i])
+		if d[roman] >= prevInt {
+			prevInt = d[roman]
+			integer += d[roman]
+		} else {
+			integer -= d[roman]
+		}
+	}
+	return integer
+}

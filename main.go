@@ -75,6 +75,13 @@ func intToRoman() {
 	fmt.Println("Integer to roman:", result)
 }
 
+// 13: /problems/roman-to-integer/
+func romanToInt() {
+	s := "MMXXIV"
+	result := Leetcode{}.romanToInt(s)
+	fmt.Println("Roman to integer:", result)
+}
+
 func main() {
 	twoSum()
 	lengthOfLongestSubstring()
@@ -86,4 +93,5 @@ func main() {
 	isMatch()
 	maxArea()
 	intToRoman()
+	romanToInt()
 }
