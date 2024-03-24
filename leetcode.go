@@ -2,6 +2,7 @@ package main
 
 import (
 	"math"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -232,4 +233,24 @@ func (l Leetcode) romanToInt(s string) int {
 		}
 	}
 	return integer
+}
+
+// 14: /problems/longest-common-prefix/
+func (l Leetcode) longestCommonPrefix(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+	if len(strs) == 1 {
+		return strs[0]
+	}
+	sort.Strings(strs)
+	var result string
+	for i := 0; i < len(strs[0]) && i < len(strs[len(strs)-1]); i++ {
+		if strs[0][i] == strs[len(strs)-1][i] {
+			result += string(strs[0][i])
+		} else {
+			break
+		}
+	}
+	return result
 }

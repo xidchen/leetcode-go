@@ -82,6 +82,13 @@ func romanToInt() {
 	fmt.Println("Roman to integer:", result)
 }
 
+// 14: /problems/longest-common-prefix/
+func longestCommonPrefix() {
+	strs := []string{"flower", "flow", "flight"}
+	result := Leetcode{}.longestCommonPrefix(strs)
+	fmt.Println("Longest common prefix:", result)
+}
+
 func main() {
 	twoSum()
 	lengthOfLongestSubstring()
@@ -94,4 +101,5 @@ func main() {
 	maxArea()
 	intToRoman()
 	romanToInt()
+	longestCommonPrefix()
 }
