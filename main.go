@@ -89,6 +89,13 @@ func longestCommonPrefix() {
 	fmt.Println("Longest common prefix:", result)
 }
 
+// 15: /problems/3sum
+func threeSum() {
+	nums := []int{-1, 0, 1, 2, -1, -4}
+	result := Leetcode{}.threeSum(nums)
+	fmt.Println("Three sum:", result)
+}
+
 func main() {
 	twoSum()
 	lengthOfLongestSubstring()
@@ -102,4 +109,5 @@ func main() {
 	intToRoman()
 	romanToInt()
 	longestCommonPrefix()
+	threeSum()
 }

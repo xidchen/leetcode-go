@@ -254,3 +254,39 @@ func (l Leetcode) longestCommonPrefix(strs []string) string {
 	}
 	return result
 }
+
+// 15: /problems/3sum
+func (l Leetcode) threeSum(nums []int) [][]int {
+	dic := make(map[int]int)
+	var res [][]int
+	for _, n := range nums {
+		dic[n]++
+	}
+	var sortedNums []int
+	for n := range dic {
+		sortedNums = append(sortedNums, n)
+	}
+	sort.Ints(sortedNums)
+	for i, x := range sortedNums {
+		if x == 0 && dic[x] > 2 {
+			res = append(res, []int{0, 0, 0})
+		} else if x != 0 && dic[x] > 1 && dic[-2*x] > 0 {
+			res = append(res, []int{x, x, -2 * x})
+		}
+		if x < 0 {
+			left := sort.Search(len(sortedNums)-i-1, func(j int) bool {
+				return sortedNums[i+j+1] >= -x-sortedNums[len(sortedNums)-1]
+			})
+			right := sort.Search(len(sortedNums)-i-1, func(j int) bool {
+				return sortedNums[i+j+1] > x/-2
+			})
+			for _, y := range sortedNums[i+left+1 : i+right+1] {
+				z := -x - y
+				if dic[z] > 0 && z != y {
+					res = append(res, []int{x, y, z})
+				}
+			}
+		}
+	}
+	return res
+}
