@@ -96,6 +96,14 @@ func threeSum() {
 	fmt.Println("Three sum:", result)
 }
 
+// 16: /problems/3sum-closest/
+func threeSumClosest() {
+	nums := []int{4, 0, 5, -5, 3, 3, 0, -4, -5}
+	target := -2
+	result := Leetcode{}.threeSumClosest(nums, target)
+	fmt.Println("Three sum closest:", result)
+}
+
 func main() {
 	twoSum()
 	lengthOfLongestSubstring()
@@ -110,4 +118,5 @@ func main() {
 	romanToInt()
 	longestCommonPrefix()
 	threeSum()
+	threeSumClosest()
 }

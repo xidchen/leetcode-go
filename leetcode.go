@@ -290,3 +290,42 @@ func (l Leetcode) threeSum(nums []int) [][]int {
 	}
 	return res
 }
+
+// 16: /problems/3sum-closest/
+func (l Leetcode) threeSumClosest(nums []int, target int) int {
+	n := len(nums)
+	sort.Ints(nums)
+	res := nums[0] + nums[1] + nums[2]
+	for i := range n - 2 {
+		j, k := i+1, n-1
+		if nums[i]+nums[j]+nums[j+1] >= target {
+			k = j + 1
+		}
+		if nums[i]+nums[k-1]+nums[k] <= target {
+			j = k - 1
+		}
+		for j < k {
+			s := nums[i] + nums[j] + nums[k]
+			if abs(target-s) < abs(target-res) {
+				res = s
+			}
+			if s == target {
+				return res
+			}
+			if s < target {
+				j++
+			}
+			if s > target {
+				k--
+			}
+		}
+	}
+	return res
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
