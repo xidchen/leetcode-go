@@ -104,6 +104,13 @@ func threeSumClosest() {
 	fmt.Println("Three sum closest:", result)
 }
 
+// 17: /problems/letter-combinations-of-a-phone-number/
+func letterCombination() {
+	digits := "38"
+	results := Leetcode{}.letterCombinations(digits)
+	fmt.Println("Letter Combinations:", results)
+}
+
 func main() {
 	twoSum()
 	lengthOfLongestSubstring()
@@ -119,4 +126,5 @@ func main() {
 	longestCommonPrefix()
 	threeSum()
 	threeSumClosest()
+	letterCombination()
 }

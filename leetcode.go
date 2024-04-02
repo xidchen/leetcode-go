@@ -329,3 +329,41 @@ func abs(x int) int {
 	}
 	return x
 }
+
+// 17: /problems/letter-combinations-of-a-phone-number/
+func (l Leetcode) letterCombinations(digits string) []string {
+	var results []string
+	if len(digits) == 0 || contains(digits, '0') || contains(digits, '1') {
+		return results
+	}
+	mapping := map[rune][]rune{
+		'2': {'a', 'b', 'c'},
+		'3': {'d', 'e', 'f'},
+		'4': {'g', 'h', 'i'},
+		'5': {'j', 'k', 'l'},
+		'6': {'m', 'n', 'o'},
+		'7': {'p', 'q', 'r', 's'},
+		'8': {'t', 'u', 'v'},
+		'9': {'w', 'x', 'y', 'z'},
+	}
+	results = append(results, "")
+	for _, digit := range digits {
+		var temp []string
+		for _, result := range results {
+			for _, letter := range mapping[digit] {
+				temp = append(temp, result+string(letter))
+			}
+		}
+		results = temp
+	}
+	return results
+}
+
+func contains(s string, r rune) bool {
+	for _, c := range s {
+		if c == r {
+			return true
+		}
+	}
+	return false
+}
