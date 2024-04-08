@@ -107,8 +107,16 @@ func threeSumClosest() {
 // 17: /problems/letter-combinations-of-a-phone-number/
 func letterCombination() {
 	digits := "38"
-	results := Leetcode{}.letterCombinations(digits)
-	fmt.Println("Letter Combinations:", results)
+	result := Leetcode{}.letterCombinations(digits)
+	fmt.Println("Letter Combinations:", result)
+}
+
+// 18: /problems/4sum/
+func fourSum() {
+	nums := []int{0, 0, 0, 1000000000, 1000000000, 1000000000, 1000000000}
+	target := 1000000000
+	result := Leetcode{}.fourSum(nums, target)
+	fmt.Println("Four Sum:", result)
 }
 
 func main() {
@@ -127,4 +135,5 @@ func main() {
 	threeSum()
 	threeSumClosest()
 	letterCombination()
+	fourSum()
 }

@@ -41,7 +41,7 @@ func (l Leetcode) lengthOfLongestSubstring(s string) int {
 
 // 5: /problems/longest-palindromic-substring/
 func (l Leetcode) longestPalindromeSubstring(s string) string {
-	if len(s) < 2 || isPalindromicString(s) {
+	if len(s) < 2 || _isPalindromicString(s) {
 		return s
 	}
 	var start, ml = -1, 0
@@ -53,12 +53,12 @@ func (l Leetcode) longestPalindromeSubstring(s string) string {
 		if i-ml >= 0 {
 			even = s[i-ml : i+1]
 		}
-		if len(odd) > 0 && isPalindromicString(odd) {
+		if len(odd) > 0 && _isPalindromicString(odd) {
 			start = i - ml - 1
 			ml += 2
 			continue
 		}
-		if len(even) > 0 && isPalindromicString(even) {
+		if len(even) > 0 && _isPalindromicString(even) {
 			start = i - ml
 			ml += 1
 		}
@@ -66,7 +66,7 @@ func (l Leetcode) longestPalindromeSubstring(s string) string {
 	return s[start : start+ml]
 }
 
-func isPalindromicString(s string) bool {
+func _isPalindromicString(s string) bool {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		if s[i] != s[j] {
 			return false
@@ -244,15 +244,15 @@ func (l Leetcode) longestCommonPrefix(strs []string) string {
 		return strs[0]
 	}
 	sort.Strings(strs)
-	var result string
+	var res string
 	for i := 0; i < len(strs[0]) && i < len(strs[len(strs)-1]); i++ {
 		if strs[0][i] == strs[len(strs)-1][i] {
-			result += string(strs[0][i])
+			res += string(strs[0][i])
 		} else {
 			break
 		}
 	}
-	return result
+	return res
 }
 
 // 15: /problems/3sum
@@ -306,7 +306,7 @@ func (l Leetcode) threeSumClosest(nums []int, target int) int {
 		}
 		for j < k {
 			s := nums[i] + nums[j] + nums[k]
-			if abs(target-s) < abs(target-res) {
+			if _abs(target-s) < _abs(target-res) {
 				res = s
 			}
 			if s == target {
@@ -323,7 +323,7 @@ func (l Leetcode) threeSumClosest(nums []int, target int) int {
 	return res
 }
 
-func abs(x int) int {
+func _abs(x int) int {
 	if x < 0 {
 		return -x
 	}
@@ -332,9 +332,9 @@ func abs(x int) int {
 
 // 17: /problems/letter-combinations-of-a-phone-number/
 func (l Leetcode) letterCombinations(digits string) []string {
-	var results []string
-	if len(digits) == 0 || contains(digits, '0') || contains(digits, '1') {
-		return results
+	var res []string
+	if len(digits) == 0 || _contains(digits, '0') || _contains(digits, '1') {
+		return res
 	}
 	mapping := map[rune][]rune{
 		'2': {'a', 'b', 'c'},
@@ -346,24 +346,67 @@ func (l Leetcode) letterCombinations(digits string) []string {
 		'8': {'t', 'u', 'v'},
 		'9': {'w', 'x', 'y', 'z'},
 	}
-	results = append(results, "")
+	res = append(res, "")
 	for _, digit := range digits {
 		var temp []string
-		for _, result := range results {
+		for _, result := range res {
 			for _, letter := range mapping[digit] {
 				temp = append(temp, result+string(letter))
 			}
 		}
-		results = temp
+		res = temp
 	}
-	return results
+	return res
 }
 
-func contains(s string, r rune) bool {
+func _contains(s string, r rune) bool {
 	for _, c := range s {
 		if c == r {
 			return true
 		}
 	}
 	return false
+}
+
+// 18: /problems/4sum/
+func (l Leetcode) fourSum(nums []int, target int) [][]int {
+	sort.Ints(nums)
+	return _kSum(nums, target, 4)
+}
+
+func _kSum(n []int, t int, k int) [][]int {
+	var res [][]int
+	if len(n) < k || t < n[0]*k || n[len(n)-1]*k < t {
+		return res
+	}
+	if k == 2 {
+		return _twoSum(n, t)
+	}
+	for i := 0; i < len(n); i++ {
+		if i == 0 || n[i-1] != n[i] {
+			sets := _kSum(n[i+1:], t-n[i], k-1)
+			for _, set := range sets {
+				res = append(res, append([]int{n[i]}, set...))
+			}
+		}
+	}
+	return res
+}
+
+func _twoSum(n []int, t int) [][]int {
+	var res [][]int
+	lo, hi := 0, len(n)-1
+	for lo < hi {
+		sum := n[lo] + n[hi]
+		if sum < t || (lo > 0 && n[lo] == n[lo-1]) {
+			lo++
+		} else if sum > t || (hi < len(n)-1 && n[hi] == n[hi+1]) {
+			hi--
+		} else {
+			res = append(res, []int{n[lo], n[hi]})
+			lo++
+			hi--
+		}
+	}
+	return res
 }
