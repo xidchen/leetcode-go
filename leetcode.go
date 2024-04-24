@@ -7,6 +7,11 @@ import (
 	"strings"
 )
 
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 type Leetcode struct{}
 
 // 1: /problems/two-sum/
@@ -19,6 +24,49 @@ func (l Leetcode) twoSum(nums []int, target int) []int {
 		dic[target-n] = i
 	}
 	return nil
+}
+
+// 2: /problems/add-two-numbers/
+func (l Leetcode) addTwoNumbers(l1, l2 *ListNode) *ListNode {
+	dummy := &ListNode{}
+	current := dummy
+	carry := 0
+	for l1 != nil || l2 != nil || carry > 0 {
+		if l1 != nil {
+			carry += l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			carry += l2.Val
+			l2 = l2.Next
+		}
+		current.Next = &ListNode{Val: carry % 10}
+		current = current.Next
+		carry /= 10
+	}
+	return dummy.Next
+}
+
+func sliceToLinkedList(nums []int) *ListNode {
+	if len(nums) == 0 {
+		return nil
+	}
+	dummy := &ListNode{}
+	current := dummy
+	for _, num := range nums {
+		current.Next = &ListNode{Val: num}
+		current = current.Next
+	}
+	return dummy.Next
+}
+
+func linkedListToSlice(node *ListNode) []int {
+	var nums []int
+	for node != nil {
+		nums = append(nums, node.Val)
+		node = node.Next
+	}
+	return nums
 }
 
 // 3: /problems/longest-substring-without-repeating-characters/

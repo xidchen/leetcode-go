@@ -10,6 +10,15 @@ func twoSum() {
 	fmt.Println("Two sum:", result)
 }
 
+// 2: /problems/add-two-numbers/
+func addTwoNumbers() {
+	l1 := sliceToLinkedList([]int{9, 9, 9, 9, 9, 9, 9})
+	l2 := sliceToLinkedList([]int{9, 9, 9, 9})
+	resultLinkedList := Leetcode{}.addTwoNumbers(l1, l2)
+	result := linkedListToSlice(resultLinkedList)
+	fmt.Println("Adding two linked list numbers:", result)
+}
+
 // 3: /problems/longest-substring-without-repeating-characters/
 func lengthOfLongestSubstring() {
 	s := "abcdefabc"
@@ -121,6 +130,7 @@ func fourSum() {
 
 func main() {
 	twoSum()
+	addTwoNumbers()
 	lengthOfLongestSubstring()
 	longestPalindromeSubstring()
 	convert()
