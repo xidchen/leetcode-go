@@ -12,6 +12,28 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func sliceToLinkedList(nums []int) *ListNode {
+	if len(nums) == 0 {
+		return nil
+	}
+	dummy := &ListNode{}
+	current := dummy
+	for _, num := range nums {
+		current.Next = &ListNode{Val: num}
+		current = current.Next
+	}
+	return dummy.Next
+}
+
+func linkedListToSlice(node *ListNode) []int {
+	var nums []int
+	for node != nil {
+		nums = append(nums, node.Val)
+		node = node.Next
+	}
+	return nums
+}
+
 type Leetcode struct{}
 
 // 1: /problems/two-sum/
@@ -45,28 +67,6 @@ func (l Leetcode) addTwoNumbers(l1, l2 *ListNode) *ListNode {
 		carry /= 10
 	}
 	return dummy.Next
-}
-
-func sliceToLinkedList(nums []int) *ListNode {
-	if len(nums) == 0 {
-		return nil
-	}
-	dummy := &ListNode{}
-	current := dummy
-	for _, num := range nums {
-		current.Next = &ListNode{Val: num}
-		current = current.Next
-	}
-	return dummy.Next
-}
-
-func linkedListToSlice(node *ListNode) []int {
-	var nums []int
-	for node != nil {
-		nums = append(nums, node.Val)
-		node = node.Next
-	}
-	return nums
 }
 
 // 3: /problems/longest-substring-without-repeating-characters/
@@ -457,4 +457,26 @@ func _twoSum(n []int, t int) [][]int {
 		}
 	}
 	return res
+}
+
+// 19: /problems/remove-nth-node-from-end-of-list/
+func (l Leetcode) removeNthFromEnd(head *ListNode, n int) *ListNode {
+	dummy := &ListNode{Next: head}
+	first := dummy
+	second := dummy
+	for i := 0; i < n; i++ {
+		if first.Next != nil {
+			first = first.Next
+		} else {
+			return head
+		}
+	}
+	for first.Next != nil {
+		first = first.Next
+		second = second.Next
+	}
+	if second.Next != nil {
+		second.Next = second.Next.Next
+	}
+	return dummy.Next
 }

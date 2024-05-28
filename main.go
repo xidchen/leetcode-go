@@ -128,6 +128,15 @@ func fourSum() {
 	fmt.Println("Four Sum:", result)
 }
 
+// 19: /problems/remove-nth-node-from-end-of-list/
+func removeNthFromEnd() {
+	head := sliceToLinkedList([]int{1, 2, 3, 4, 5})
+	n := 2
+	resultLinkedList := Leetcode{}.removeNthFromEnd(head, n)
+	result := linkedListToSlice(resultLinkedList)
+	fmt.Println("Remove nth node from end of list:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -146,4 +155,5 @@ func main() {
 	threeSumClosest()
 	letterCombination()
 	fourSum()
+	removeNthFromEnd()
 }
