@@ -137,6 +137,13 @@ func removeNthFromEnd() {
 	fmt.Println("Remove nth node from end of list:", result)
 }
 
+// 20: /problems/valid-parentheses/
+func isValid() {
+	s := "()[]{}"
+	result := Leetcode{}.isValid(s)
+	fmt.Println("Valid parentheses:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -156,4 +163,5 @@ func main() {
 	letterCombination()
 	fourSum()
 	removeNthFromEnd()
+	isValid()
 }

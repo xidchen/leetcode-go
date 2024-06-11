@@ -480,3 +480,20 @@ func (l Leetcode) removeNthFromEnd(head *ListNode, n int) *ListNode {
 	}
 	return dummy.Next
 }
+
+// 20: /problems/valid-parentheses/
+func (l Leetcode) isValid(s string) bool {
+	d := map[rune]rune{'(': ')', '[': ']', '{': '}'}
+	var stack []rune
+	for _, c := range s {
+		if closing, exists := d[c]; exists {
+			stack = append(stack, closing)
+		} else {
+			if len(stack) == 0 || stack[len(stack)-1] != c {
+				return false
+			}
+			stack = stack[:len(stack)-1]
+		}
+	}
+	return len(stack) == 0
+}
