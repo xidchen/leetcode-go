@@ -144,6 +144,15 @@ func isValid() {
 	fmt.Println("Valid parentheses:", result)
 }
 
+// 21: /problems/merge-two-sorted-lists/
+func mergeTwoLists() {
+	l1 := sliceToLinkedList([]int{1, 2, 4})
+	l2 := sliceToLinkedList([]int{1, 3, 4})
+	resultLinkedList := Leetcode{}.mergeTwoLists(l1, l2)
+	result := linkedListToSlice(resultLinkedList)
+	fmt.Println("Merge two lists:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -164,4 +173,5 @@ func main() {
 	fourSum()
 	removeNthFromEnd()
 	isValid()
+	mergeTwoLists()
 }
