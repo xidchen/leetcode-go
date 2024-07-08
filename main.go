@@ -153,6 +153,13 @@ func mergeTwoLists() {
 	fmt.Println("Merge two lists:", result)
 }
 
+// 22: /problems/generate-parentheses/
+func generateParenthesis() {
+	n := 3
+	result := Leetcode{}.generateParenthesis(n)
+	fmt.Println("Generate parentheses:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -174,4 +181,5 @@ func main() {
 	removeNthFromEnd()
 	isValid()
 	mergeTwoLists()
+	generateParenthesis()
 }
