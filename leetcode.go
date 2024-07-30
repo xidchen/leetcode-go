@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/heap"
 	"math"
 	"sort"
 	"strconv"
@@ -10,6 +11,20 @@ import (
 type ListNode struct {
 	Val  int
 	Next *ListNode
+}
+
+type ListNodeHeap []*ListNode
+
+func (h *ListNodeHeap) Len() int           { return len(*h) }
+func (h *ListNodeHeap) Less(i, j int) bool { return (*h)[i].Val < (*h)[j].Val }
+func (h *ListNodeHeap) Swap(i, j int)      { (*h)[i], (*h)[j] = (*h)[j], (*h)[i] }
+func (h *ListNodeHeap) Push(x interface{}) { *h = append(*h, x.(*ListNode)) }
+func (h *ListNodeHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
 }
 
 func sliceToLinkedList(nums []int) *ListNode {
@@ -540,4 +555,26 @@ func (l Leetcode) generateParenthesis(n int) []string {
 
 	backtrack("", 0, 0)
 	return res
+}
+
+// 23: /problems/merge-k-sorted-lists/
+func (l Leetcode) mergeKLists(lists []*ListNode) *ListNode {
+	minHeap := &ListNodeHeap{}
+	heap.Init(minHeap)
+	for _, node := range lists {
+		if node != nil {
+			heap.Push(minHeap, node)
+		}
+	}
+	dummy := &ListNode{}
+	prev := dummy
+	for minHeap.Len() > 0 {
+		node := heap.Pop(minHeap).(*ListNode)
+		prev.Next = node
+		prev = prev.Next
+		if node.Next != nil {
+			heap.Push(minHeap, node.Next)
+		}
+	}
+	return dummy.Next
 }

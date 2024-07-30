@@ -160,6 +160,18 @@ func generateParenthesis() {
 	fmt.Println("Generate parentheses:", result)
 }
 
+// 23: /problems/merge-k-sorted-lists/
+func mergeKLists() {
+	lists := []*ListNode{
+		sliceToLinkedList([]int{1, 4, 5}),
+		sliceToLinkedList([]int{1, 3, 4}),
+		sliceToLinkedList([]int{2, 6}),
+	}
+	resultLinkedList := Leetcode{}.mergeKLists(lists)
+	result := linkedListToSlice(resultLinkedList)
+	fmt.Println("Merge k sorted lists:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -182,4 +194,5 @@ func main() {
 	isValid()
 	mergeTwoLists()
 	generateParenthesis()
+	mergeKLists()
 }
