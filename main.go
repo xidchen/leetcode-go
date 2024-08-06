@@ -172,6 +172,14 @@ func mergeKLists() {
 	fmt.Println("Merge k sorted lists:", result)
 }
 
+// 24: /problems/swap-nodes-in-pairs/
+func swapPairs() {
+	head := sliceToLinkedList([]int{1, 2, 3, 4, 5, 6})
+	resultLinkedList := Leetcode{}.swapPairs(head)
+	result := linkedListToSlice(resultLinkedList)
+	fmt.Println("Swap nodes in pairs:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -195,4 +203,5 @@ func main() {
 	mergeTwoLists()
 	generateParenthesis()
 	mergeKLists()
+	swapPairs()
 }
