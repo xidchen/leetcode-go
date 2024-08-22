@@ -593,3 +593,15 @@ func (l Leetcode) swapPairs(head *ListNode) *ListNode {
 	}
 	return dummy.Next
 }
+
+// 26: /problems/remove-duplicates-from-sorted-array/
+func (l Leetcode) removeDuplicates(nums []int) int {
+	nextNew := 0
+	for i := 0; i < len(nums); i++ {
+		if i == 0 || nums[i] != nums[i-1] {
+			nums[nextNew] = nums[i]
+			nextNew++
+		}
+	}
+	return nextNew
+}

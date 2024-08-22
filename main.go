@@ -180,6 +180,13 @@ func swapPairs() {
 	fmt.Println("Swap nodes in pairs:", result)
 }
 
+// 26: /problems/remove-duplicates-from-sorted-array/
+func removeDuplicates() {
+	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	result := Leetcode{}.removeDuplicates(nums)
+	fmt.Println("Remove duplicates from sorted array:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -204,4 +211,5 @@ func main() {
 	generateParenthesis()
 	mergeKLists()
 	swapPairs()
+	removeDuplicates()
 }
