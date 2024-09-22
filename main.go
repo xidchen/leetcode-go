@@ -187,6 +187,14 @@ func removeDuplicates() {
 	fmt.Println("Remove duplicates from sorted array:", result)
 }
 
+// 27: /problems/remove-element/
+func removeElement() {
+	nums := []int{0, 1, 2, 2, 3, 0, 4, 2}
+	val := 2
+	result := Leetcode{}.removeElement(nums, val)
+	fmt.Println("Remove element:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -212,4 +220,5 @@ func main() {
 	mergeKLists()
 	swapPairs()
 	removeDuplicates()
+	removeElement()
 }
