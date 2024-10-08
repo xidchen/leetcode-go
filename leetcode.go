@@ -617,3 +617,8 @@ func (l Leetcode) removeElement(nums []int, val int) int {
 	}
 	return k
 }
+
+// 28: /problems/find-the-index-of-the-first-occurrence-in-a-string/
+func (l Leetcode) strStr(haystack string, needle string) int {
+	return strings.Index(haystack, needle)
+}

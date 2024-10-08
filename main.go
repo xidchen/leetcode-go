@@ -195,6 +195,14 @@ func removeElement() {
 	fmt.Println("Remove element:", result)
 }
 
+// 28: /problems/find-the-index-of-the-first-occurrence-in-a-string/
+func strStr() {
+	haystack := "sadness"
+	needle := "sad"
+	result := Leetcode{}.strStr(haystack, needle)
+	fmt.Println("Find the index of the first occurrence in a string:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -221,4 +229,5 @@ func main() {
 	swapPairs()
 	removeDuplicates()
 	removeElement()
+	strStr()
 }
