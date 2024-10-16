@@ -203,6 +203,14 @@ func strStr() {
 	fmt.Println("Find the index of the first occurrence in a string:", result)
 }
 
+// 29: /problems/divide-two-integers/
+func divide() {
+	dividend := 7
+	divisor := -3
+	result := Leetcode{}.divide(dividend, divisor)
+	fmt.Println("Divide two integers:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -230,4 +238,5 @@ func main() {
 	removeDuplicates()
 	removeElement()
 	strStr()
+	divide()
 }

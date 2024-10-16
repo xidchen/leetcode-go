@@ -49,6 +49,13 @@ func linkedListToSlice(node *ListNode) []int {
 	return nums
 }
 
+func abs(x int64) int64 {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
 type Leetcode struct{}
 
 // 1: /problems/two-sum/
@@ -621,4 +628,31 @@ func (l Leetcode) removeElement(nums []int, val int) int {
 // 28: /problems/find-the-index-of-the-first-occurrence-in-a-string/
 func (l Leetcode) strStr(haystack string, needle string) int {
 	return strings.Index(haystack, needle)
+}
+
+// 29: /problems/divide-two-integers/
+func (l Leetcode) divide(dividend int, divisor int) int {
+	if dividend == math.MinInt32 && divisor == -1 {
+		return math.MaxInt32
+	}
+	diffSign := (dividend < 0) != (divisor < 0)
+	dividend64 := int64(dividend)
+	divisor64 := int64(divisor)
+	res := 0
+	dividend64 = abs(dividend64)
+	divisor64 = abs(divisor64)
+	for dividend64 >= divisor64 {
+		temp := divisor64
+		multiple := 1
+		for dividend64 >= temp<<1 {
+			temp <<= 1
+			multiple <<= 1
+		}
+		dividend64 -= temp
+		res += multiple
+	}
+	if diffSign {
+		res = -res
+	}
+	return max(min(res, math.MaxInt32), math.MinInt32)
 }
