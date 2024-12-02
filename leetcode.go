@@ -656,3 +656,48 @@ func (l Leetcode) divide(dividend int, divisor int) int {
 	}
 	return max(min(res, math.MaxInt32), math.MinInt32)
 }
+
+// 30: /problems/substring-with-concatenation-of-all-words/
+func (l Leetcode) findSubstring(s string, words []string) []int {
+	var res []int
+	if len(words) == 0 || len(s) < len(words)*len(words[0]) {
+		return res
+	}
+	wc := len(words)
+	wl := len(words[0])
+	sl := len(s)
+	wd := make(map[string]int)
+	for _, w := range words {
+		wd[w]++
+	}
+	for i := 0; i < wl; i++ {
+		start := i
+		cnt := 0
+		tmpDict := make(map[string]int)
+		for j := i; j <= sl-wl; j += wl {
+			word := s[j : j+wl]
+			if count, exists := wd[word]; exists {
+				cnt++
+				tmpDict[word]++
+				for tmpDict[word] > count {
+					startWord := s[start : start+wl]
+					tmpDict[startWord]--
+					start += wl
+					cnt--
+				}
+				if cnt == wc {
+					res = append(res, start)
+					startWord := s[start : start+wl]
+					tmpDict[startWord]--
+					start += wl
+					cnt--
+				}
+			} else {
+				start = j + wl
+				cnt = 0
+				tmpDict = make(map[string]int)
+			}
+		}
+	}
+	return res
+}

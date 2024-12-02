@@ -211,6 +211,14 @@ func divide() {
 	fmt.Println("Divide two integers:", result)
 }
 
+// 30: /problems/substring-with-concatenation-of-all-words/
+func findSubstring() {
+	s := "barfoothefoobarman"
+	words := []string{"foo", "bar"}
+	result := Leetcode{}.findSubstring(s, words)
+	fmt.Println("Substring with concatenation of all words:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -239,4 +247,5 @@ func main() {
 	removeElement()
 	strStr()
 	divide()
+	findSubstring()
 }
