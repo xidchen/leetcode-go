@@ -56,6 +56,12 @@ func abs(x int64) int64 {
 	return x
 }
 
+func reverseListElements(nums []int) {
+	for i, j := 0, len(nums)-1; i < j; i, j = i+1, j-1 {
+		nums[i], nums[j] = nums[j], nums[i]
+	}
+}
+
 type Leetcode struct{}
 
 // 1: /problems/two-sum/
@@ -700,4 +706,24 @@ func (l Leetcode) findSubstring(s string, words []string) []int {
 		}
 	}
 	return res
+}
+
+// 31: /problems/next-permutation/
+func (l Leetcode) nextPermutation(nums []int) {
+	n := len(nums)
+	if n < 2 {
+		return
+	}
+	i := n - 2
+	for i >= 0 && nums[i] >= nums[i+1] {
+		i--
+	}
+	if i >= 0 {
+		j := n - 1
+		for j >= 0 && nums[j] <= nums[i] {
+			j--
+		}
+		nums[i], nums[j] = nums[j], nums[i]
+	}
+	reverseListElements(nums[i+1:])
 }

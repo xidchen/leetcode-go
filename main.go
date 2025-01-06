@@ -219,6 +219,13 @@ func findSubstring() {
 	fmt.Println("Substring with concatenation of all words:", result)
 }
 
+// 31: /problems/next-permutation/
+func nextPermutation() {
+	nums := []int{4, 5, 3, 2, 1}
+	Leetcode{}.nextPermutation(nums)
+	fmt.Println("Next permutation:", nums)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -248,4 +255,5 @@ func main() {
 	strStr()
 	divide()
 	findSubstring()
+	nextPermutation()
 }
