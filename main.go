@@ -226,6 +226,13 @@ func nextPermutation() {
 	fmt.Println("Next permutation:", nums)
 }
 
+// 32: /problems/longest-valid-parentheses/
+func longestValidParentheses() {
+	s := ")()())"
+	result := Leetcode{}.longestValidParentheses(s)
+	fmt.Println("Longest valid parentheses:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -256,4 +263,5 @@ func main() {
 	divide()
 	findSubstring()
 	nextPermutation()
+	longestValidParentheses()
 }
