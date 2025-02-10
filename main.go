@@ -233,6 +233,14 @@ func longestValidParentheses() {
 	fmt.Println("Longest valid parentheses:", result)
 }
 
+// 33: /problems/search-in-rotated-sorted-array/
+func search() {
+	nums := []int{4, 5, 6, 7, 0, 1, 2}
+	target := 0
+	result := Leetcode{}.search(nums, target)
+	fmt.Println("Search in rotated sorted array:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -264,4 +272,5 @@ func main() {
 	findSubstring()
 	nextPermutation()
 	longestValidParentheses()
+	search()
 }
