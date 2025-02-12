@@ -241,6 +241,14 @@ func search() {
 	fmt.Println("Search in rotated sorted array:", result)
 }
 
+// 34: /problems/find-first-and-last-position-of-element-in-sorted-array/
+func searchRange() {
+	nums := []int{5, 7, 7, 8, 8, 10}
+	target := 8
+	result := Leetcode{}.searchRange(nums, target)
+	fmt.Println("Find first and last position of element in sorted array:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -273,4 +281,5 @@ func main() {
 	nextPermutation()
 	longestValidParentheses()
 	search()
+	searchRange()
 }

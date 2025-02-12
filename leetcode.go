@@ -775,3 +775,25 @@ func (l Leetcode) search(nums []int, target int) int {
 	}
 	return -1
 }
+
+// 34: /problems/find-first-and-last-position-of-element-in-sorted-array/
+func (l Leetcode) searchRange(nums []int, target int) []int {
+	binary := func(tgt float64, left, right int) int {
+		for left <= right {
+			mid := (left + right) / 2
+			if float64(nums[mid]) < tgt {
+				left = mid + 1
+			} else {
+				right = mid - 1
+			}
+		}
+		return left
+	}
+	n := len(nums)
+	lower := binary(float64(target)-0.5, 0, n-1)
+	upper := binary(float64(target)+0.5, 0, n-1)
+	if lower == upper {
+		return []int{-1, -1}
+	}
+	return []int{lower, upper - 1}
+}
