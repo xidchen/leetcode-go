@@ -249,6 +249,14 @@ func searchRange() {
 	fmt.Println("Find first and last position of element in sorted array:", result)
 }
 
+// 35: /problems/search-insert-position/
+func searchInsert() {
+	nums := []int{1, 3, 5, 6}
+	target := 0
+	result := Leetcode{}.searchInsert(nums, target)
+	fmt.Println("Search insert position:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -282,4 +290,5 @@ func main() {
 	longestValidParentheses()
 	search()
 	searchRange()
+	searchInsert()
 }

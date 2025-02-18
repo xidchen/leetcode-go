@@ -797,3 +797,21 @@ func (l Leetcode) searchRange(nums []int, target int) []int {
 	}
 	return []int{lower, upper - 1}
 }
+
+// 35: /problems/search-insert-position/
+func (l Leetcode) searchInsert(nums []int, target int) int {
+	left := 0
+	right := len(nums) - 1
+	for left <= right {
+		mid := (left + right) / 2
+		if nums[mid] == target {
+			return mid
+		}
+		if nums[mid] < target {
+			left = mid + 1
+		} else {
+			right = mid - 1
+		}
+	}
+	return left
+}
