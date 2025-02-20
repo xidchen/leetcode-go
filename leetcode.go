@@ -62,6 +62,15 @@ func reverseListElements(nums []int) {
 	}
 }
 
+func contains(arr []byte, val byte) bool {
+	for _, v := range arr {
+		if v == val {
+			return true
+		}
+	}
+	return false
+}
+
 type Leetcode struct{}
 
 // 1: /problems/two-sum/
@@ -814,4 +823,29 @@ func (l Leetcode) searchInsert(nums []int, target int) int {
 		}
 	}
 	return left
+}
+
+// 36: /problems/valid-sudoku/
+func (l Leetcode) isValidSudoku(board [][]byte) bool {
+	rows := make([][]byte, 9)
+	cols := make([][]byte, 9)
+	boxes := make([][]byte, 9)
+	for r := 0; r < 9; r++ {
+		for c := 0; c < 9; c++ {
+			digit := board[r][c]
+			if digit == '.' {
+				continue
+			}
+			b := r/3*3 + c/3
+			if contains(rows[r], digit) ||
+				contains(cols[c], digit) ||
+				contains(boxes[b], digit) {
+				return false
+			}
+			rows[r] = append(rows[r], digit)
+			cols[c] = append(cols[c], digit)
+			boxes[b] = append(boxes[b], digit)
+		}
+	}
+	return true
 }
