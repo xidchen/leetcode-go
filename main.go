@@ -180,6 +180,15 @@ func swapPairs() {
 	fmt.Println("Swap nodes in pairs:", result)
 }
 
+// 25: /problems/reverse-nodes-in-k-group/
+func reverseKGroup() {
+	head := sliceToLinkedList([]int{1, 2, 3, 4, 5})
+	k := 2
+	resultLinkedList := Leetcode{}.reverseKGroup(head, k)
+	result := linkedListToSlice(resultLinkedList)
+	fmt.Println("Reverse nodes in k group:", result)
+}
+
 // 26: /problems/remove-duplicates-from-sorted-array/
 func removeDuplicates() {
 	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
@@ -298,6 +307,7 @@ func main() {
 	generateParenthesis()
 	mergeKLists()
 	swapPairs()
+	reverseKGroup()
 	removeDuplicates()
 	removeElement()
 	strStr()

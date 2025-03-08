@@ -616,6 +616,28 @@ func (l Leetcode) swapPairs(head *ListNode) *ListNode {
 	return dummy.Next
 }
 
+// 25: /problems/reverse-nodes-in-k-group/
+func (l Leetcode) reverseKGroup(head *ListNode, k int) *ListNode {
+	if k < 2 {
+		return head
+	}
+	node := head
+	for i := 0; i < k; i++ {
+		if node == nil {
+			return head
+		}
+		node = node.Next
+	}
+	prev := l.reverseKGroup(node, k)
+	for i := 0; i < k; i++ {
+		temp := head.Next
+		head.Next = prev
+		prev = head
+		head = temp
+	}
+	return prev
+}
+
 // 26: /problems/remove-duplicates-from-sorted-array/
 func (l Leetcode) removeDuplicates(nums []int) int {
 	nextNew := 0
