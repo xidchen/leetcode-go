@@ -283,6 +283,13 @@ func isValidSudoku() {
 	fmt.Println("Valid sudoku:", result)
 }
 
+// 38: /problems/count-and-say/
+func countAndSay() {
+	n := 5
+	result := Leetcode{}.countAndSay(n)
+	fmt.Println("Count and say:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -319,4 +326,5 @@ func main() {
 	searchRange()
 	searchInsert()
 	isValidSudoku()
+	countAndSay()
 }

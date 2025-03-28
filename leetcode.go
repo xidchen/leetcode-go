@@ -871,3 +871,25 @@ func (l Leetcode) isValidSudoku(board [][]byte) bool {
 	}
 	return true
 }
+
+// 38: /problems/count-and-say/
+func (l Leetcode) countAndSay(n int) string {
+	seq := []int{1}
+	for i := 1; i < n; i++ {
+		var next []int
+		for _, num := range seq {
+			if len(next) == 0 || num != next[len(next)-1] {
+				next = append(next, 1)
+				next = append(next, num)
+			} else {
+				next[len(next)-2]++
+			}
+		}
+		seq = next
+	}
+	var sb strings.Builder
+	for _, num := range seq {
+		sb.WriteString(strconv.Itoa(num))
+	}
+	return sb.String()
+}
