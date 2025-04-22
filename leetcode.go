@@ -872,6 +872,61 @@ func (l Leetcode) isValidSudoku(board [][]byte) bool {
 	return true
 }
 
+// 37: /problems/sudoku-solver/
+func (l Leetcode) solveSudoku(board [][]byte) {
+	backtrackSudoku(board)
+}
+
+func backtrackSudoku(board [][]byte) bool {
+	row, col, found := findEmptySudokuCell(board)
+	if !found {
+		return true
+	}
+	for digit := '1'; digit <= '9'; digit++ {
+		if isValidSudokuPlacement(board, row, col, byte(digit)) {
+			board[row][col] = byte(digit)
+			if backtrackSudoku(board) {
+				return true
+			}
+			board[row][col] = '.'
+		}
+	}
+	return false
+}
+
+func findEmptySudokuCell(board [][]byte) (int, int, bool) {
+	for row := 0; row < 9; row++ {
+		for col := 0; col < 9; col++ {
+			if board[row][col] == '.' {
+				return row, col, true
+			}
+		}
+	}
+	return 0, 0, false
+}
+
+func isValidSudokuPlacement(board [][]byte, row, col int, digit byte) bool {
+	for i := 0; i < 9; i++ {
+		if board[row][i] == digit {
+			return false
+		}
+	}
+	for i := 0; i < 9; i++ {
+		if board[i][col] == digit {
+			return false
+		}
+	}
+	boxRow, boxCol := (row/3)*3, (col/3)*3
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if board[boxRow+i][boxCol+j] == digit {
+				return false
+			}
+		}
+	}
+	return true
+}
+
 // 38: /problems/count-and-say/
 func (l Leetcode) countAndSay(n int) string {
 	seq := []int{1}

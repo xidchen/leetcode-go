@@ -283,6 +283,34 @@ func isValidSudoku() {
 	fmt.Println("Valid sudoku:", result)
 }
 
+// 37: /problems/sudoku-solver/
+func solveSudoku() {
+	board := [][]byte{
+		{'4', '5', '.', '.', '.', '9', '3', '.', '1'},
+		{'.', '.', '.', '.', '8', '.', '9', '.', '.'},
+		{'.', '2', '.', '.', '.', '.', '.', '.', '.'},
+		{'.', '.', '2', '.', '.', '4', '.', '.', '.'},
+		{'.', '.', '8', '.', '.', '.', '.', '.', '3'},
+		{'3', '4', '.', '.', '7', '.', '.', '5', '.'},
+		{'1', '9', '.', '.', '.', '8', '.', '.', '5'},
+		{'.', '.', '3', '.', '.', '.', '.', '.', '.'},
+		{'.', '.', '.', '6', '.', '.', '.', '7', '.'},
+	}
+	Leetcode{}.solveSudoku(board)
+	fmt.Println("Sudoku solver: [")
+	for _, row := range board {
+		fmt.Printf("\t[")
+		for i, cell := range row {
+			fmt.Print(string(cell))
+			if i < len(row)-1 {
+				fmt.Print(" ")
+			}
+		}
+		fmt.Println("]")
+	}
+	fmt.Println("]")
+}
+
 // 38: /problems/count-and-say/
 func countAndSay() {
 	n := 5
@@ -326,5 +354,6 @@ func main() {
 	searchRange()
 	searchInsert()
 	isValidSudoku()
+	solveSudoku()
 	countAndSay()
 }
