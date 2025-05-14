@@ -318,6 +318,14 @@ func countAndSay() {
 	fmt.Println("Count and say:", result)
 }
 
+// 39: /problems/combination-sum/
+func combinationSum() {
+	candidates := []int{2, 3, 5}
+	target := 8
+	result := Leetcode{}.combinationSum(candidates, target)
+	fmt.Println("Combination sum:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -356,4 +364,5 @@ func main() {
 	isValidSudoku()
 	solveSudoku()
 	countAndSay()
+	combinationSum()
 }

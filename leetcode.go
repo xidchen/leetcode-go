@@ -948,3 +948,30 @@ func (l Leetcode) countAndSay(n int) string {
 	}
 	return sb.String()
 }
+
+// 39: /problems/combination-sum/
+func (l Leetcode) combinationSum(candidates []int, target int) [][]int {
+	var res [][]int
+	var helper func(nums []int, nxt int, t int, p []int, r *[][]int)
+	helper = func(nums []int, nxt int, t int, p []int, r *[][]int) {
+		if t == 0 {
+			pCopy := make([]int, len(p))
+			copy(pCopy, p)
+			*r = append(*r, pCopy)
+			return
+		}
+		if nxt == len(nums) {
+			return
+		}
+		for i := 0; t-i*nums[nxt] >= 0; i++ {
+			currentP := make([]int, len(p))
+			copy(currentP, p)
+			for j := 0; j < i; j++ {
+				currentP = append(currentP, nums[nxt])
+			}
+			helper(nums, nxt+1, t-i*nums[nxt], currentP, r)
+		}
+	}
+	helper(candidates, 0, target, []int{}, &res)
+	return res
+}
