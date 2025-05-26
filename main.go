@@ -326,6 +326,14 @@ func combinationSum() {
 	fmt.Println("Combination sum:", result)
 }
 
+// 40: /problems/combination-sum-ii/
+func combinationSum2() {
+	candidates := []int{10, 1, 2, 7, 6, 1, 5}
+	target := 8
+	result := Leetcode{}.combinationSum2(candidates, target)
+	fmt.Println("Combination sum 2:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -365,4 +373,5 @@ func main() {
 	solveSudoku()
 	countAndSay()
 	combinationSum()
+	combinationSum2()
 }

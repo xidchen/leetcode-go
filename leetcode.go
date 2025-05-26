@@ -975,3 +975,32 @@ func (l Leetcode) combinationSum(candidates []int, target int) [][]int {
 	helper(candidates, 0, target, []int{}, &res)
 	return res
 }
+
+// 40: /problems/combination-sum-ii/
+func (l Leetcode) combinationSum2(candidates []int, target int) [][]int {
+	var res [][]int
+	var current []int
+	sort.Ints(candidates)
+	var backtrack func(pos, remain int)
+	backtrack = func(pos, remain int) {
+		if remain == 0 {
+			pCopy := make([]int, len(current))
+			copy(pCopy, current)
+			res = append(res, pCopy)
+			return
+		}
+		for i := pos; i < len(candidates); i++ {
+			if i > pos && candidates[i] == candidates[i-1] {
+				continue
+			}
+			if candidates[i] > remain {
+				break
+			}
+			current = append(current, candidates[i])
+			backtrack(i+1, remain-candidates[i])
+			current = current[:len(current)-1]
+		}
+	}
+	backtrack(0, target)
+	return res
+}
