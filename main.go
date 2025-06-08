@@ -334,6 +334,13 @@ func combinationSum2() {
 	fmt.Println("Combination sum 2:", result)
 }
 
+// 41: /problems/first-missing-positive/
+func firstMissingPositive() {
+	nums := []int{3, 4, -1, 1}
+	result := Leetcode{}.firstMissingPositive(nums)
+	fmt.Println("First missing positive:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -374,4 +381,5 @@ func main() {
 	countAndSay()
 	combinationSum()
 	combinationSum2()
+	firstMissingPositive()
 }
