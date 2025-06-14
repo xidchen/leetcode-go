@@ -341,6 +341,13 @@ func firstMissingPositive() {
 	fmt.Println("First missing positive:", result)
 }
 
+// 42: /problems/trapping-rain-water/
+func trap() {
+	height := []int{4, 2, 0, 3, 2, 5}
+	result := Leetcode{}.trap(height)
+	fmt.Println("Trapping rain water:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -382,4 +389,5 @@ func main() {
 	combinationSum()
 	combinationSum2()
 	firstMissingPositive()
+	trap()
 }
