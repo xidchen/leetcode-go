@@ -1045,3 +1045,29 @@ func (l Leetcode) trap(height []int) int {
 	}
 	return res
 }
+
+// 43: /problems/multiply-strings/
+func (l Leetcode) multiply(num1 string, num2 string) string {
+	if num1 == "0" || num2 == "0" {
+		return "0"
+	}
+	m, n := len(num1), len(num2)
+	res := make([]int, m+n)
+	for i := m - 1; i >= 0; i-- {
+		for j := n - 1; j >= 0; j-- {
+			mul := int(num1[i]-'0') * int(num2[j]-'0')
+			p1 := i + j
+			p2 := i + j + 1
+			sum := mul + res[p2]
+			res[p1] += sum / 10
+			res[p2] = sum % 10
+		}
+	}
+	var sb strings.Builder
+	for i := 0; i < len(res); i++ {
+		if !(sb.Len() == 0 && res[i] == 0) {
+			sb.WriteString(strconv.Itoa(res[i]))
+		}
+	}
+	return sb.String()
+}

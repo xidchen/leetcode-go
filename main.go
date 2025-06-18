@@ -348,6 +348,14 @@ func trap() {
 	fmt.Println("Trapping rain water:", result)
 }
 
+// 43: /problems/multiply-strings/
+func multiply() {
+	num1 := "123"
+	num2 := "456"
+	result := Leetcode{}.multiply(num1, num2)
+	fmt.Println("Multiply strings:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -390,4 +398,5 @@ func main() {
 	combinationSum2()
 	firstMissingPositive()
 	trap()
+	multiply()
 }
