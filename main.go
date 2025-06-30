@@ -356,6 +356,14 @@ func multiply() {
 	fmt.Println("Multiply strings:", result)
 }
 
+// 44: /problems/wildcard-matching/
+func isMatchWildcard() {
+	s := "aa"
+	p := "a*"
+	result := Leetcode{}.isMatchWildcard(s, p)
+	fmt.Println("Wildcard matching:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -399,4 +407,5 @@ func main() {
 	firstMissingPositive()
 	trap()
 	multiply()
+	isMatchWildcard()
 }
