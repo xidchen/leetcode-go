@@ -1074,25 +1074,26 @@ func (l Leetcode) multiply(num1 string, num2 string) string {
 
 // 44: /problems/wildcard-matching/
 func (l Leetcode) isMatchWildcard(s string, p string) bool {
-	m, n := len(s), len(p)
-	dp := make([][]bool, m+1)
-	for i := range dp {
-		dp[i] = make([]bool, n+1)
-	}
-	dp[0][0] = true
-	for j := 1; j <= n; j++ {
-		if p[j-1] == '*' {
-			dp[0][j] = dp[0][j-1]
+	sIdx, pIdx := 0, 0
+	starIdx, match := -1, 0
+	for sIdx < len(s) {
+		if pIdx < len(p) && (p[pIdx] == '?' || p[pIdx] == s[sIdx]) {
+			sIdx++
+			pIdx++
+		} else if pIdx < len(p) && p[pIdx] == '*' {
+			starIdx = pIdx
+			match = sIdx
+			pIdx++
+		} else if starIdx != -1 {
+			pIdx = starIdx + 1
+			match++
+			sIdx = match
+		} else {
+			return false
 		}
 	}
-	for i := 1; i <= m; i++ {
-		for j := 1; j <= n; j++ {
-			if p[j-1] == '?' || s[i-1] == p[j-1] {
-				dp[i][j] = dp[i-1][j-1]
-			} else if p[j-1] == '*' {
-				dp[i][j] = dp[i][j-1] || dp[i-1][j]
-			}
-		}
+	for pIdx < len(p) && p[pIdx] == '*' {
+		pIdx++
 	}
-	return dp[m][n]
+	return pIdx == len(p)
 }
