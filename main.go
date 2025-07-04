@@ -364,6 +364,13 @@ func isMatchWildcard() {
 	fmt.Println("Wildcard matching:", result)
 }
 
+// 45: /problems/jump-game-ii/
+func jump() {
+	nums := []int{2, 3, 1, 1, 4}
+	result := Leetcode{}.jump(nums)
+	fmt.Println("Jump game II:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -408,4 +415,5 @@ func main() {
 	trap()
 	multiply()
 	isMatchWildcard()
+	jump()
 }
