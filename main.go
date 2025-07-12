@@ -371,6 +371,13 @@ func jump() {
 	fmt.Println("Jump game II:", result)
 }
 
+// 46: /problems/permutations/
+func permute() {
+	nums := []int{1, 2, 3}
+	result := Leetcode{}.permute(nums)
+	fmt.Println("Permutations:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -416,4 +423,5 @@ func main() {
 	multiply()
 	isMatchWildcard()
 	jump()
+	permute()
 }
