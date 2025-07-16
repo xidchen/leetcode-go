@@ -1133,3 +1133,29 @@ func (l Leetcode) permute(nums []int) [][]int {
 	backtrack(0)
 	return res
 }
+
+// 47: /problems/permutations-ii/
+func (l Leetcode) permuteUnique(nums []int) [][]int {
+	var res [][]int
+	var backtrack func(start int)
+	backtrack = func(start int) {
+		used := make(map[int]bool)
+		if start == len(nums) {
+			perm := make([]int, len(nums))
+			copy(perm, nums)
+			res = append(res, perm)
+			return
+		}
+		for i := start; i < len(nums); i++ {
+			if used[nums[i]] {
+				continue
+			}
+			used[nums[i]] = true
+			nums[start], nums[i] = nums[i], nums[start]
+			backtrack(start + 1)
+			nums[start], nums[i] = nums[i], nums[start]
+		}
+	}
+	backtrack(0)
+	return res
+}

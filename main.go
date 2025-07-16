@@ -378,6 +378,13 @@ func permute() {
 	fmt.Println("Permutations:", result)
 }
 
+// 47: /problems/permutations-ii/
+func permuteUnique() {
+	nums := []int{1, 1, 2}
+	result := Leetcode{}.permuteUnique(nums)
+	fmt.Println("Permutations II:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -424,4 +431,5 @@ func main() {
 	isMatchWildcard()
 	jump()
 	permute()
+	permuteUnique()
 }
