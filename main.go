@@ -385,6 +385,18 @@ func permuteUnique() {
 	fmt.Println("Permutations II:", result)
 }
 
+// 48: /problems/rotate-image/
+func rotate() {
+	matrix := [][]int{
+		{5, 1, 9, 11},
+		{2, 4, 8, 10},
+		{13, 3, 6, 7},
+		{15, 14, 12, 16},
+	}
+	Leetcode{}.rotate(matrix)
+	fmt.Println("Rotate image:", matrix)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -432,4 +444,5 @@ func main() {
 	jump()
 	permute()
 	permuteUnique()
+	rotate()
 }
