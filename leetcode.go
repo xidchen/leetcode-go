@@ -1172,3 +1172,21 @@ func (l Leetcode) rotate(matrix [][]int) {
 		reverseListElements(matrix[i])
 	}
 }
+
+// 49: /problems/group-anagrams/
+func (l Leetcode) groupAnagrams(strs []string) [][]string {
+	groups := make(map[string][]string)
+	for _, str := range strs {
+		count := make([]byte, 26)
+		for i := 0; i < len(str); i++ {
+			count[str[i]-'a']++
+		}
+		key := string(count)
+		groups[key] = append(groups[key], str)
+	}
+	res := make([][]string, 0, len(groups))
+	for _, group := range groups {
+		res = append(res, group)
+	}
+	return res
+}

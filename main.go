@@ -397,6 +397,13 @@ func rotate() {
 	fmt.Println("Rotate image:", matrix)
 }
 
+// 49: /problems/group-anagrams/
+func groupAnagrams() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	result := Leetcode{}.groupAnagrams(strs)
+	fmt.Println("Group anagrams:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -445,4 +452,5 @@ func main() {
 	permute()
 	permuteUnique()
 	rotate()
+	groupAnagrams()
 }
