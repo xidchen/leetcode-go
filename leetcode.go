@@ -1190,3 +1190,24 @@ func (l Leetcode) groupAnagrams(strs []string) [][]string {
 	}
 	return res
 }
+
+// 50: /problems/powx-n/
+func (l Leetcode) myPow(x float64, n int) float64 {
+	if n == 0 {
+		return 1
+	}
+	if n < 0 {
+		x = 1 / x
+		n = -n
+	}
+	res := 1.0
+	base := x
+	for n > 0 {
+		if n&1 == 1 {
+			res *= base
+		}
+		base *= base
+		n >>= 1
+	}
+	return res
+}

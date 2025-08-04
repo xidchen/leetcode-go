@@ -404,6 +404,14 @@ func groupAnagrams() {
 	fmt.Println("Group anagrams:", result)
 }
 
+// 50: /problems/powx-n/
+func myPow() {
+	x := 2.0
+	n := 10
+	result := Leetcode{}.myPow(x, n)
+	fmt.Printf("Pow(%v, %v): %v\n", x, n, result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -453,4 +461,5 @@ func main() {
 	permuteUnique()
 	rotate()
 	groupAnagrams()
+	myPow()
 }
