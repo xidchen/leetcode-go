@@ -412,6 +412,13 @@ func myPow() {
 	fmt.Printf("Pow(%v, %v): %v\n", x, n, result)
 }
 
+// 51: /problems/n-queens/
+func solveNQueens() {
+	n := 4
+	result := Leetcode{}.solveNQueens(n)
+	fmt.Printf("%v-Queens: %v\n", n, result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -462,4 +469,5 @@ func main() {
 	rotate()
 	groupAnagrams()
 	myPow()
+	solveNQueens()
 }

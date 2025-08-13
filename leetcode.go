@@ -1211,3 +1211,40 @@ func (l Leetcode) myPow(x float64, n int) float64 {
 	}
 	return res
 }
+
+// 51: /problems/n-queens/
+func (l Leetcode) solveNQueens(n int) [][]string {
+	var res [][]string
+	solution := make([]int, n)
+	var backtrack func(row, cols, diag1, diag2 int)
+	backtrack = func(row, cols, diag1, diag2 int) {
+		if row == n {
+			board := make([]string, n)
+			for i := 0; i < n; i++ {
+				row := make([]byte, n)
+				for j := 0; j < n; j++ {
+					row[j] = '.'
+				}
+				row[solution[i]] = 'Q'
+				board[i] = string(row)
+			}
+			res = append(res, board)
+			return
+		}
+		available := ((1 << n) - 1) & (^(cols | diag1 | diag2))
+		for available != 0 {
+			pos := available & (-available)
+			available ^= pos
+			col := 0
+			temp := pos
+			for temp > 1 {
+				temp >>= 1
+				col++
+			}
+			solution[row] = col
+			backtrack(row+1, cols|pos, (diag1|pos)<<1, (diag2|pos)>>1)
+		}
+	}
+	backtrack(0, 0, 0, 0)
+	return res
+}
