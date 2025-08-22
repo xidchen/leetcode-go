@@ -1248,3 +1248,22 @@ func (l Leetcode) solveNQueens(n int) [][]string {
 	backtrack(0, 0, 0, 0)
 	return res
 }
+
+// 52: /problems/n-queens-ii/
+func (l Leetcode) totalNQueens(n int) int {
+	var backtrack func(row, cols, diag1, diag2 int) int
+	backtrack = func(row, cols, diag1, diag2 int) int {
+		if row == n {
+			return 1
+		}
+		count := 0
+		available := ((1 << n) - 1) & (^(cols | diag1 | diag2))
+		for available != 0 {
+			pos := available & (-available)
+			available ^= pos
+			count += backtrack(row+1, cols|pos, (diag1|pos)<<1, (diag2|pos)>>1)
+		}
+		return count
+	}
+	return backtrack(0, 0, 0, 0)
+}
