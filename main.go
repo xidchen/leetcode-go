@@ -426,6 +426,13 @@ func totalNQueens() {
 	fmt.Printf("Total %v-Queens: %v\n", n, result)
 }
 
+// 53: /problems/maximum-subarray/
+func maxSubArray() {
+	nums := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
+	result := Leetcode{}.maxSubArray(nums)
+	fmt.Println("Maximum subarray:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -478,4 +485,5 @@ func main() {
 	myPow()
 	solveNQueens()
 	totalNQueens()
+	maxSubArray()
 }

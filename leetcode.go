@@ -1267,3 +1267,13 @@ func (l Leetcode) totalNQueens(n int) int {
 	}
 	return backtrack(0, 0, 0, 0)
 }
+
+// 53: /problems/maximum-subarray/
+func (l Leetcode) maxSubArray(nums []int) int {
+	var currentMax, globalMax = nums[0], nums[0]
+	for i := 1; i < len(nums); i++ {
+		currentMax = max(currentMax+nums[i], nums[i])
+		globalMax = max(globalMax, currentMax)
+	}
+	return globalMax
+}
