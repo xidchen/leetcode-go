@@ -433,6 +433,17 @@ func maxSubArray() {
 	fmt.Println("Maximum subarray:", result)
 }
 
+// 54: /problems/spiral-matrix/
+func spiralOrder() {
+	matrix := [][]int{
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 9},
+	}
+	result := Leetcode{}.spiralOrder(matrix)
+	fmt.Println("Spiral matrix:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -486,4 +497,5 @@ func main() {
 	solveNQueens()
 	totalNQueens()
 	maxSubArray()
+	spiralOrder()
 }

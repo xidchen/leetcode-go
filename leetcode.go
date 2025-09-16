@@ -1277,3 +1277,31 @@ func (l Leetcode) maxSubArray(nums []int) int {
 	}
 	return globalMax
 }
+
+// 54: /problems/spiral-matrix/
+func (l Leetcode) spiralOrder(matrix [][]int) []int {
+	var res []int
+	for len(matrix) > 0 {
+		res = append(res, matrix[0]...)
+		matrix = matrix[1:]
+		if len(matrix) > 0 && len(matrix) > 0 {
+			matrix = rotateMatrix90CCW(matrix)
+		}
+	}
+	return res
+}
+
+func rotateMatrix90CCW(matrix [][]int) [][]int {
+	if len(matrix) == 0 || len(matrix[0]) == 0 {
+		return matrix
+	}
+	rows, cols := len(matrix), len(matrix[0])
+	rotated := make([][]int, cols)
+	for i := 0; i < cols; i++ {
+		rotated[i] = make([]int, rows)
+		for j := 0; j < rows; j++ {
+			rotated[i][j] = matrix[j][cols-i-1]
+		}
+	}
+	return rotated
+}
