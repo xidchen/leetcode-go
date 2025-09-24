@@ -444,6 +444,13 @@ func spiralOrder() {
 	fmt.Println("Spiral matrix:", result)
 }
 
+// 55: /problems/jump-game/
+func canJump() {
+	nums := []int{3, 2, 1, 0, 4}
+	result := Leetcode{}.canJump(nums)
+	fmt.Println("Jump game:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -498,4 +505,5 @@ func main() {
 	totalNQueens()
 	maxSubArray()
 	spiralOrder()
+	canJump()
 }

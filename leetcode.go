@@ -1305,3 +1305,18 @@ func rotateMatrix90CCW(matrix [][]int) [][]int {
 	}
 	return rotated
 }
+
+// 55: /problems/jump-game/
+func (l Leetcode) canJump(nums []int) bool {
+	maxReach := 0
+	for i := 0; i < len(nums); i++ {
+		if i > maxReach {
+			return false
+		}
+		maxReach = max(maxReach, i+nums[i])
+	}
+	if maxReach >= len(nums)-1 {
+		return true
+	}
+	return true
+}
