@@ -451,6 +451,18 @@ func canJump() {
 	fmt.Println("Jump game:", result)
 }
 
+// 56: /problems/merge-intervals/
+func mergeIntervals() {
+	intervals := [][]int{
+		{1, 3},
+		{2, 6},
+		{8, 10},
+		{15, 18},
+	}
+	result := Leetcode{}.mergeIntervals(intervals)
+	fmt.Println("Merge intervals:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -506,4 +518,5 @@ func main() {
 	maxSubArray()
 	spiralOrder()
 	canJump()
+	mergeIntervals()
 }
