@@ -463,6 +463,20 @@ func mergeIntervals() {
 	fmt.Println("Merge intervals:", result)
 }
 
+// 57: /problems/insert-interval/
+func insertInterval() {
+	intervals := [][]int{
+		{1, 2},
+		{3, 5},
+		{6, 7},
+		{8, 10},
+		{12, 16},
+	}
+	newInterval := []int{4, 8}
+	result := Leetcode{}.insertInterval(intervals, newInterval)
+	fmt.Println("Insert interval:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -519,4 +533,5 @@ func main() {
 	spiralOrder()
 	canJump()
 	mergeIntervals()
+	insertInterval()
 }
