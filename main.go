@@ -477,6 +477,13 @@ func insertInterval() {
 	fmt.Println("Insert interval:", result)
 }
 
+// 58: /problems/length-of-last-word/
+func lengthOfLastWord() {
+	s := "Hello World"
+	result := Leetcode{}.lengthOfLastWord(s)
+	fmt.Println("Length of last word:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -534,4 +541,5 @@ func main() {
 	canJump()
 	mergeIntervals()
 	insertInterval()
+	lengthOfLastWord()
 }
