@@ -1368,3 +1368,41 @@ func (l Leetcode) lengthOfLastWord(s string) int {
 	words := strings.Split(s, " ")
 	return len(words[len(words)-1])
 }
+
+// 59: /problems/spiral-matrix-ii/
+func (l Leetcode) generateMatrix(n int) [][]int {
+	matrix := make([][]int, n)
+	for i := range matrix {
+		matrix[i] = make([]int, n)
+	}
+	num := 1
+	top, bottom := 0, n-1
+	left, right := 0, n-1
+	for top <= bottom && left <= right {
+		for col := left; col <= right; col++ {
+			matrix[top][col] = num
+			num++
+		}
+		top++
+		for row := top; row <= bottom; row++ {
+			matrix[row][right] = num
+			num++
+		}
+		right--
+		if top <= bottom {
+			for col := right; col >= left; col-- {
+				matrix[bottom][col] = num
+				num++
+			}
+			bottom--
+		}
+		if left <= right {
+			for row := bottom; row >= top; row-- {
+				matrix[row][left] = num
+				num++
+			}
+			left++
+		}
+	}
+	return matrix
+}

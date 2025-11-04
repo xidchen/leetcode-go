@@ -484,6 +484,13 @@ func lengthOfLastWord() {
 	fmt.Println("Length of last word:", result)
 }
 
+// 59: /problems/spiral-matrix-ii/
+func generateMatrix() {
+	n := 3
+	result := Leetcode{}.generateMatrix(n)
+	fmt.Println("Spiral matrix II:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -542,4 +549,5 @@ func main() {
 	mergeIntervals()
 	insertInterval()
 	lengthOfLastWord()
+	generateMatrix()
 }
