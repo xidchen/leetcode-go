@@ -1406,3 +1406,25 @@ func (l Leetcode) generateMatrix(n int) [][]int {
 	}
 	return matrix
 }
+
+// 60: /problems/permutation-sequence/
+func (l Leetcode) getPermutation(n int, k int) string {
+	factorial := make([]int, n)
+	factorial[0] = 1
+	for i := 1; i < n; i++ {
+		factorial[i] = factorial[i-1] * i
+	}
+	numbers := make([]int, n)
+	for i := 0; i < n; i++ {
+		numbers[i] = i + 1
+	}
+	k--
+	res := make([]byte, n)
+	for i := 0; i < n; i++ {
+		index := k / factorial[n-i-1]
+		res[i] = byte(numbers[index] + '0')
+		numbers = append(numbers[:index], numbers[index+1:]...)
+		k %= factorial[n-i-1]
+	}
+	return string(res)
+}

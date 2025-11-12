@@ -491,6 +491,14 @@ func generateMatrix() {
 	fmt.Println("Spiral matrix II:", result)
 }
 
+// 60: /problems/permutation-sequence/
+func getPermutation() {
+	n := 4
+	k := 9
+	result := Leetcode{}.getPermutation(n, k)
+	fmt.Println("Permutation sequence:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -550,4 +558,5 @@ func main() {
 	insertInterval()
 	lengthOfLastWord()
 	generateMatrix()
+	getPermutation()
 }
