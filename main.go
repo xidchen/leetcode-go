@@ -499,6 +499,15 @@ func getPermutation() {
 	fmt.Println("Permutation sequence:", result)
 }
 
+// 61: /problems/rotate-list/
+func rotateRight() {
+	head := sliceToLinkedList([]int{1, 2, 3, 4, 5})
+	k := 2
+	resultLinkedList := Leetcode{}.rotateRight(head, k)
+	result := linkedListToSlice(resultLinkedList)
+	fmt.Println("Rotate list:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -559,4 +568,5 @@ func main() {
 	lengthOfLastWord()
 	generateMatrix()
 	getPermutation()
+	rotateRight()
 }

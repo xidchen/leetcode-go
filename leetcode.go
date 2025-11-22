@@ -1428,3 +1428,27 @@ func (l Leetcode) getPermutation(n int, k int) string {
 	}
 	return string(res)
 }
+
+// 61: /problems/rotate-list/
+func (l Leetcode) rotateRight(head *ListNode, k int) *ListNode {
+	if head == nil || head.Next == nil || k == 0 {
+		return head
+	}
+	length := 1
+	tail := head
+	for tail.Next != nil {
+		tail = tail.Next
+		length++
+	}
+	k %= length
+	if k == 0 {
+		return head
+	}
+	tail.Next = head
+	for i := 0; i < length-k; i++ {
+		tail = tail.Next
+	}
+	newHead := tail.Next
+	tail.Next = nil
+	return newHead
+}
