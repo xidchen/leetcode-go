@@ -508,6 +508,14 @@ func rotateRight() {
 	fmt.Println("Rotate list:", result)
 }
 
+// 62: /problems/unique-paths/
+func uniquePaths() {
+	m := 3
+	n := 7
+	result := Leetcode{}.uniquePaths(m, n)
+	fmt.Println("Unique paths:", result)
+}
+
 func main() {
 	twoSum()
 	addTwoNumbers()
@@ -569,4 +577,5 @@ func main() {
 	generateMatrix()
 	getPermutation()
 	rotateRight()
+	uniquePaths()
 }
